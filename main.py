@@ -1,14 +1,22 @@
-from turtle import Turtle, Screen
+from turtle import Turtle, colormode, Screen
 import random
 
 hirst = Turtle()
 
-colors = ["#2F4F4F", "#fafcc2", "#9ab3f5", "#ffa5a5", "#794c74", "#AFEEEE", "#FF6347", "#00FF00", "#48D1CC", "#ff9b93", "#4e8d7c", "#d35d6e", "#db6400", "#bce6eb", "#f05454", "#cad315", "#7e7474", "#2d6187", "#555555"]
+colormode(255)
+
+
+def randomColor():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    return (r,g,b)
+
 directions = [0, 90, 180, 270]
 
 
 def drawShapes(sides):
-    hirst.color(random.choice(colors))
+    hirst.color(randomColor())
     angle = 360 / sides
     for _ in range(sides):
         hirst.left(angle)
@@ -21,7 +29,7 @@ def randomWalk():
     for _ in range(500):
         hirst.forward(30)
         hirst.setheading(random.choice(directions))
-        hirst.color(random.choice(colors))
+        hirst.color(randomColor())
 
 
 def main():
