@@ -1,9 +1,10 @@
-from turtle import Turtle, colormode, Screen
+from turtle import Turtle, colormode, Screen, tiltangle
 import random
 
 hirst = Turtle()
 
 colormode(255)
+hirst.speed(0)
 
 
 def randomColor():
@@ -24,19 +25,24 @@ def drawShapes(sides):
 
 
 def randomWalk():
-    hirst.pensize(5)
-    hirst.speed(6)
     for _ in range(500):
+        hirst.pensize(5)
         hirst.forward(30)
         hirst.setheading(random.choice(directions))
         hirst.color(randomColor())
 
 
+def drawSpiralograph(tiltAngle):
+    times = 360 // tiltAngle
+    for _ in range(times):
+        hirst.color(randomColor())
+        hirst.circle(100)
+        hirst.setheading(hirst.heading() + tiltAngle)
+
 def main():
     #     for sides in range(3, 11):
     #         drawShapes(sides)
-    randomWalk()
-
+    drawSpiralograph(2)
 
 main()
 screen = Screen()
